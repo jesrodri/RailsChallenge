@@ -11,16 +11,16 @@ RSpec.describe User, :type => :model do
       expect(subject).to be_valid
     end
 
-    # it 'is not valid without a name' do
-    #   nameless = User.new(age: 29, bio: 'Love dogs and cinema.')
-    #   expect{(nameless.save)}.to raise_error
-    # end
+    it 'is not valid without a name' do
+      nameless = User.new(age: 29, bio: 'Love dogs and cinema.')
+      expect(nameless).to_not be_valid
+    end
 
-    # it 'is not valid with a duplicated name' do
-    #   subject.save
-    #   user = User.new( name: 'Sarah', age: 35, bio: 'Love music and skating.')
-    #   expect{(user.save)}.to raise_error
-    # end
+    it 'is not valid with a duplicated name' do
+      subject.save
+      user = User.new( name: 'Sarah', age: 35, bio: 'Love music and skating.')
+      expect(user).to_not be_valid
+    end
   end
 
   context 'other attributes' do
