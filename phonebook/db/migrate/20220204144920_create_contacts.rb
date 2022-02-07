@@ -3,7 +3,6 @@ class CreateContacts < ActiveRecord::Migration[6.1]
     create_table :contacts do |t|
       t.string :name, null: false
       t.date :birthday
-      t.belongs_to :user
       t.references :user, foreign_key: true
 
       t.index :name, unique: true
